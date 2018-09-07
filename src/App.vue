@@ -1,29 +1,71 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="inspire" dark>
+  <!-- SIDEBAR -->
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      clipped
+      app
+    >
+      <v-list dense>
+        <v-list-tile v-for="appModule in modules" :key="appModule.text">
+          <v-list-tile-action>
+            <v-icon>{{ appModule.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              {{ appModule.text }}
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon color="grey darken-1">info</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-title class="grey--text text--darken-1">About</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- HEADER -->
+    <v-toolbar
+      color="pink"
+      dense
+      fixed
+      clipped-left
+      app
+    >
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title class="mr-5 align-center">
+        <span class="title">Fonug II - Générateur aléatoire de personnages</span>
+      </v-toolbar-title>
+    </v-toolbar>
+
+    <!-- CONTENT + ROUTER VIEW -->
+    <v-content>
+      <v-container fill-height>
+        <router-view></router-view>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+export default {
+  data: () => ({
+    drawer: true,
+    modules: [
+      { icon: 'shuffle', text: 'Générer un personnage' },
+      { icon: 'share', text: 'Partager votre personnage' }
+    ]
+  }),
+  props: {
+    source: String
   }
 }
+</script>
+
+<style lang="scss">
+@import '~vuetify/dist/vuetify.min.css';
+@import '~material-design-icons-iconfont/dist/material-design-icons.css';
 </style>
