@@ -8,7 +8,9 @@
       app
     >
       <v-list dense>
-        <v-list-tile v-for="appModule in modules" :key="appModule.text">
+        <router-link v-for="appModule in modules" :key="appModule.text"
+        :to="{name: appModule.name}"
+         tag="v-list-tile" >
           <v-list-tile-action>
             <v-icon>{{ appModule.icon }}</v-icon>
           </v-list-tile-action>
@@ -17,13 +19,13 @@
               {{ appModule.text }}
             </v-list-tile-title>
           </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
+        </router-link>
+        <router-link :to="{name: 'about'}" tag="v-list-tile">
           <v-list-tile-action>
             <v-icon color="grey darken-1">info</v-icon>
           </v-list-tile-action>
           <v-list-tile-title class="grey--text text--darken-1">About</v-list-tile-title>
-        </v-list-tile>
+        </router-link>
       </v-list>
     </v-navigation-drawer>
 
@@ -55,8 +57,8 @@ export default {
   data: () => ({
     drawer: true,
     modules: [
-      { icon: 'shuffle', text: 'Générer un personnage' },
-      { icon: 'share', text: 'Partager votre personnage' }
+      { icon: 'shuffle', text: 'Générer un personnage', name: 'home' },
+      { icon: 'share', text: 'Partager votre personnage', name: 'share' }
     ]
   }),
   props: {
