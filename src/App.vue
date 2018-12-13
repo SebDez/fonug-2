@@ -1,5 +1,5 @@
 <template>
-  <VApp id="inspire" dark>
+  <VApp dark>
     <!-- SIDEBAR -->
     <VNavigationDrawer
       v-model="drawer"
@@ -28,7 +28,7 @@
             </VIcon>
           </VListTileAction>
           <VListTileTitle class="grey--text text--darken-1">
-            About
+            {{ $t('navigation.about') }}
           </VListTileTitle>
         </RouterLink>
       </VList>
@@ -45,7 +45,7 @@
       <VToolbarSideIcon @click.stop="drawer = !drawer" />
       <VToolbarTitle class="mr-5 align-center">
         <span class="title">
-          Fonug II - Générateur aléatoire de personnages
+          {{ $t('global.appTitle') }}
         </span>
       </VToolbarTitle>
     </VToolbar>
@@ -61,17 +61,20 @@
 
 <script>
 export default {
-  data: () => ({
-    drawer: true,
-    modules: [
-      { icon: 'shuffle', text: 'Générer un personnage', name: 'home' },
-      { icon: 'share', text: 'Partager votre personnage', name: 'share' }
-    ]
-  })
+  data () {
+    return {
+      drawer: true,
+      modules: [
+        { icon: 'shuffle', text: this.$t('navigation.home'), name: 'home' },
+        { icon: 'share', text: this.$t('navigation.share'), name: 'share' }
+      ]
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 @import '~vuetify/dist/vuetify.min.css';
 @import '~material-design-icons-iconfont/dist/material-design-icons.css';
+
 </style>

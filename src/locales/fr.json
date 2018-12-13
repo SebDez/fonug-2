@@ -1,1 +1,20 @@
-{}
+{
+    "global": {
+        "appTitle":"Fonug II - Générateur aléatoire de personnages"
+    },
+    "navigation": {
+        "home": "Générer un personnage",
+        "share": "Partager votre personnage",
+        "about": "A propos"
+    },
+    "home":{
+        "title":"Nouveau personnage",
+        "selectGenderLabel":"Genre du personnage",
+        "generateButton":"Générer mon personnage"
+    },
+    "genders":{
+        "0":"Peu importe",
+        "1":"Féminin",
+        "2":"Masculin"
+    }
+}

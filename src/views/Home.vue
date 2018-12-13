@@ -5,7 +5,7 @@
         <VCardTitle primary-title>
           <div>
             <h3 class="headline mb-0">
-              Nouveau personnage
+              {{ $t('home.title') }}
             </h3>
           </div>
         </VCardTitle>
@@ -13,14 +13,14 @@
 
       <VFlex>
         <p class="text-md-center">
-          Genre du personnage
+          {{ $t('home.selectGenderLabel') }}
         </p>
       </VFlex>
 
       <VCardActions class="justify-center">
         <VFlex xs8>
           <VSelect
-            :items="GENDERS"
+            :items="genders"
             :value="genderSelected"
             solo
             outline
@@ -32,7 +32,7 @@
         <VBtn color="pink"
               @click="generateCharacter"
         >
-          Generer mon personnage
+          {{ $t('home.generateButton') }}
         </VBtn>
       </VFlex>
     </VCard>
@@ -46,8 +46,12 @@ export default {
   name: 'home',
   data () {
     return {
-      GENDERS,
       genderSelected: 0
+    }
+  },
+  computed: {
+    genders () {
+      return GENDERS.map(value => ({ text: this.$t(`genders.${value}`), value }))
     }
   },
   methods: {
