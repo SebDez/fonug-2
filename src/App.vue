@@ -1,55 +1,62 @@
 <template>
-  <v-app id="inspire" dark>
-  <!-- SIDEBAR -->
-    <v-navigation-drawer
+  <VApp id="inspire" dark>
+    <!-- SIDEBAR -->
+    <VNavigationDrawer
       v-model="drawer"
       fixed
       clipped
       app
     >
-      <v-list dense>
-        <router-link v-for="appModule in modules" :key="appModule.text"
-        :to="{name: appModule.name}"
-         tag="v-list-tile" >
-          <v-list-tile-action>
-            <v-icon>{{ appModule.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
+      <VList dense>
+        <RouterLink v-for="appModule in modules" :key="appModule.text"
+                    :to="{name: appModule.name}"
+                    tag="v-list-tile"
+        >
+          <VListTileAction>
+            <VIcon>{{ appModule.icon }}</VIcon>
+          </VListTileAction>
+          <VListTileContent>
+            <VListTileTitle>
               {{ appModule.text }}
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </router-link>
-        <router-link :to="{name: 'about'}" tag="v-list-tile">
-          <v-list-tile-action>
-            <v-icon color="grey darken-1">info</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title class="grey--text text--darken-1">About</v-list-tile-title>
-        </router-link>
-      </v-list>
-    </v-navigation-drawer>
+            </VListTileTitle>
+          </VListTileContent>
+        </RouterLink>
+        <RouterLink :to="{name: 'about'}" tag="v-list-tile">
+          <VListTileAction>
+            <VIcon color="grey darken-1">
+              info
+            </VIcon>
+          </VListTileAction>
+          <VListTileTitle class="grey--text text--darken-1">
+            About
+          </VListTileTitle>
+        </RouterLink>
+      </VList>
+    </VNavigationDrawer>
 
     <!-- HEADER -->
-    <v-toolbar
+    <VToolbar
       color="pink"
       dense
       fixed
       clipped-left
       app
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title class="mr-5 align-center">
-        <span class="title">Fonug II - Générateur aléatoire de personnages</span>
-      </v-toolbar-title>
-    </v-toolbar>
+      <VToolbarSideIcon @click.stop="drawer = !drawer" />
+      <VToolbarTitle class="mr-5 align-center">
+        <span class="title">
+          Fonug II - Générateur aléatoire de personnages
+        </span>
+      </VToolbarTitle>
+    </VToolbar>
 
     <!-- CONTENT + ROUTER VIEW -->
-    <v-content>
-      <v-container fill-height>
-        <router-view></router-view>
-      </v-container>
-    </v-content>
-  </v-app>
+    <VContent>
+      <VContainer fill-height>
+        <RouterView />
+      </VContainer>
+    </VContent>
+  </VApp>
 </template>
 
 <script>
@@ -60,10 +67,7 @@ export default {
       { icon: 'shuffle', text: 'Générer un personnage', name: 'home' },
       { icon: 'share', text: 'Partager votre personnage', name: 'share' }
     ]
-  }),
-  props: {
-    source: String
-  }
+  })
 }
 </script>
 

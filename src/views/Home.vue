@@ -1,33 +1,38 @@
 <template>
-  <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-
-        <v-card-title primary-title>
+  <VLayout>
+    <VFlex xs12 sm6 offset-sm3>
+      <VCard>
+        <VCardTitle primary-title>
           <div>
-            <h3 class="headline mb-0">FONUG est un générateur aléatoire de personnage.</h3>
+            <h3 class="headline mb-0">
+              FONUG est un générateur aléatoire de personnage.
+            </h3>
           </div>
-        </v-card-title>
+        </VCardTitle>
 
-        <v-card-text>
-          <p class="text-md-center">Il convient autant pour la génération rapide de Personages Non Joueurs (PNJ) que
+        <VCardText>
+          <p class="text-md-center">
+            Il convient autant pour la génération rapide de Personages Non Joueurs (PNJ) que
             pour d'autres personnages de fiction, le but n'est pas de générer une fiche personnage mais de bien donner des pistes lors de la création du personnage.
-          Vous pouvez préselectionner le genre de votre personnage si vous le désirez, puis lancez la génération.</p>
-        </v-card-text>
+            Vous pouvez préselectionner le genre de votre personnage si vous le désirez, puis lancez la génération.
+          </p>
+        </VCardText>
 
-        <v-select
+        <VSelect
           :items="genders"
           :value="genderSelected"
           label="Select gender"
           solo
-        ></v-select>
+        />
 
-        <v-card-actions>
-        <v-btn class="text-md-center" @click="generateCharacter" color="info">Generer mon personnage</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+        <VCardActions>
+          <VBtn class="text-md-center" color="info" @click="generateCharacter">
+            Generer mon personnage
+          </VBtn>
+        </VCardActions>
+      </VCard>
+    </VFlex>
+  </VLayout>
 </template>
 
 <script>
